@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from community.views import write
+from community.views import articlelist, write
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # http ~~ 1:8000/write/
-    path('write/', write, name='write'), # paht, view의 함수
+    path('write/', write, name='write'), # path, view의 함수
+    path('list/', articlelist, name='list'),
 ]
