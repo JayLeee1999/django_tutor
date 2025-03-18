@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+</head>
+<body>
+    <h1> 장고는 처음이야 </h1>
+    <p>{{hello_django}}</p>
+    <form action="" method="post">
+        <table>
+            {{form}}{% csrf_token %}
+        </table>
+        <button type="submit">확인</button>
+    </form>
+</body>
+</html>
