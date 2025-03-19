@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.urls import reverse
 from .models import Article
 # . = 현재 .. = 상위폴더  / 현재 동일한 폴더에 있는 models .. views 랑 community 안에 있음
 from .forms import Form
@@ -26,6 +27,7 @@ def write(request):
         if form.is_valid():
             # DB 테이블에 저장
             form.save()
+        return redirect(reverse('community:list'))
     else:
         form = Form() # Form() 객체 생성
     return render(request, 'write.html',
