@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Article
+# . = 현재 .. = 상위폴더  / 현재 동일한 폴더에 있는 models .. views 랑 community 안에 있음
 from .forms import Form
 
 # from community.forms import Form
@@ -33,3 +34,9 @@ def write(request):
 
 
 # return render(request, 'write.html', {'키':파이썬변수})
+
+def viewdetail(request, num=1):
+    article_detail = Article.objects.get(id=num) # 하나 갖고 올때는 get
+    # 모든 것을 갖고 오면 all.. id가 num 인거 하나 갖고 올게~
+    print(article_detail)
+    return render(request, 'view_detail.html',{'article_detail':article_detail})
