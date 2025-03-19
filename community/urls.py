@@ -14,16 +14,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import include, path
+from django.urls import path
 from community.views import articlelist, viewdetail, write
-from django_tutor.views import index
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    # http ~~ 1:8000/write/
-    path('', index, name='index'),
-    path('', include('community.urls'))
+    path('write/', write, name='write'), # path, view의 함수
+    path('list/', articlelist, name='list'),
+    path('view_detail/<int:num>/', viewdetail, name='detail'),
 ]
-# view_detail/1 > 뒤에 숫자가 계속 바뀐다면.. 문법을 넣으면 됨
-# <int 숫자야~ num=1 views 에 있는 num과 같아야해
