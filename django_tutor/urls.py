@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from community.views import articlelist, viewdetail, write
+from community.views import articlelist, viewdetail, write, index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +24,7 @@ urlpatterns = [
     path('write/', write, name='write'), # path, view의 함수
     path('list/', articlelist, name='list'),
     path('view_detail/<int:num>/', viewdetail, name='detail'),
+    path('', index, name='index'),
 ]
 # view_detail/1 > 뒤에 숫자가 계속 바뀐다면.. 문법을 넣으면 됨
 # <int 숫자야~ num=1 views 에 있는 num과 같아야해
