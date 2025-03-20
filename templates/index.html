@@ -1,15 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>홈에서 최근 글 보기</h1>
-    {% for article in latest_article_list %}
-        <li> {{article.title}} | {{article.name}} 
-            | {{article.cdate}} </li>
-    {% endfor %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}
+<title>홈</title>
+{% endblock title %}
+{% block contents %}
+    <h1>HOME</h1>
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">title</th>
+            <th scope="col">name</th>
+            <th scope="col">date</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for article in latest_article_list %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td><a href="/view_detail/{{article.id}}/">{{article.title}}</a></td>
+            <td>{{article.name}}</td>
+            <td>{{article.cdate}}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock contents %}
+      

@@ -1,17 +1,17 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<title>Document</title>
-</head>
-<body>
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>WRITE</title>
+{% endblock title %}
+{% block contents %}
+
     <h1> 장고는 처음이야 </h1>
     <p>{{hello_django}}</p>
     <form action="" method="post">
         <table>
-            {{form}}{% csrf_token %}
+            {{ form | crispy }}{% csrf_token %}
         </table>
-        <button type="submit">확인</button>
+        <button type="submit" class="btn btn-warning">확인</button>
     </form>
-</body>
-</html>
+{% endblock contents %}

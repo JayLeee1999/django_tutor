@@ -9,7 +9,7 @@ from .forms import Form
 # Create your views here.
 def articlelist(request):
     # Article 클래스와 연결된 테이블의 모든 레코드를 조회
-    article_list = Article.objects.all()
+    article_list = Article.objects.all().order_by('-cdate')
     # for a in article_list:
     #     print('이름:', a.name, '제목:', a.title)
     print(article_list)
