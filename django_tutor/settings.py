@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'community',
     'crispy_forms',
     'crispy_bootstrap4',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -119,6 +120,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = (BASE_DIR, '', 'static')
+# 프로젝트 폴더가 base_dir 임
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

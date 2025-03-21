@@ -23,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # http ~~ 1:8000/write/
     path('', index, name='index'),
-    path('', include('community.urls'))
+    path('', include('community.urls')),
+    path('', include('dashboard.urls')),
 ]
 # view_detail/1 > 뒤에 숫자가 계속 바뀐다면.. 문법을 넣으면 됨
 # <int 숫자야~ num=1 views 에 있는 num과 같아야해

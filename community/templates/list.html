@@ -3,15 +3,32 @@
 <title>글 목록</title>
 {% endblock title %}
 {% block contents %}
+{% load static %}
 
-    <h1>상세내용</h1>
-    <p>제목 | 작성자 | 작성날짜</p>
-    <ul>
-        {% for article in article_list %}
-        <li><a href="/view_detail/{{article.id}}/">{{article.title}}</a> 
-            | {{article.name}} | {{ article.cdate|date:"Y년 n월 j일 l"}} 
-        </li>
-        {% endfor %}
-    </ul>
-    <button class="btn btn-warning"><a href="/write">글쓰기</a></button>
+<h1>상세내용</h1>
+<img src="{% static 'images/로제.jpeg' %}" alt="로제떡볶이" width="200" height="200">
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">제목</th>
+        <th scope="col">작성자</th>
+        <th scope="col">작성날짜</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    {% for article in article_list %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td><a href="/view_detail/{{article.id}}/">{{article.title}}</td>
+        <td>{{article.name}}</td>
+        <td>{{ article.cdate|date:"Y년 n월 j일 l"}}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+
+
 {% endblock contents %}
