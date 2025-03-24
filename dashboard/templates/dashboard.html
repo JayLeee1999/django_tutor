@@ -4,8 +4,75 @@
 <title>DASHBOARD</title>
 {% endblock title %}
 {% block contents %}
+<h1>인구대시보드</h1>
+<div class="row mt-3 pt-3"> <!-- div.row.mt-3.pt-3 -->
+    <div class="col-md-4">
+        <div class="border p-3 shadow">
+            <h4>인구수</h4>
+            <hr>
+            <form action="" method="post">
 
-    <h1>인구대시보드</h1>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <canvas id="myChart"></canvas>
+    </div>
+</div>
 
+<!--chart 데이터를 처리하는 js 영역
+chart js 라이브러리 -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+// chart가 그려지는 캔버스 식별 id가 mychart
+
+const ctx = document.getElementById('myChart');
+
+// chart.js를 이용해 chart 객체를 생성 (차트를 그림)
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+    // 나라 이름 랜더링
+    // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: [
+        {% for data in dataset %}
+        '{{data.country}}',
+        {% endfor %}
+    ],
+    datasets: [{
+        label: '인구수',
+        // 인구데이터 랜더링
+        // data: [12, 19, 3, 5, 2, 30],
+        data: [        
+            {% for data in dataset %}
+            '{{data.population}}',
+            {% endfor %}
+            ],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(201, 203, 207, 0.2)'],
+        borderColor: [
+            'rgb(255, 99, 132)'],
+        borderWidth: 3
+    }]
+    },
+    options: {
+    scales: {
+        y: {
+        beginAtZero: true
+        }
+    }
+    }
+});
+</script> 
+      
 {% endblock contents %}
 
