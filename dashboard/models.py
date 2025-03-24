@@ -7,5 +7,6 @@ class CountryData(models.Model):
     class Meta:
         verbose_name_plural = '각 나라별 인구 데이라'
 
+
     def __str__(self):
         return f'{self.country}--{self.population}'

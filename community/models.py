@@ -8,4 +8,10 @@ class Article(models.Model):
     url = models.URLField()
     email = models.EmailField()
     cdate = models.DateTimeField(auto_now_add=True)
-    
+
+    class Meta:
+        verbose_name_plural = '입력 값'
+
+
+    def __str__(self):
+        return f'{self.title}--{self.name}--{self.contents}'

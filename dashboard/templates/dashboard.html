@@ -10,8 +10,10 @@
         <div class="border p-3 shadow">
             <h4>인구수</h4>
             <hr>
-            <form action="" method="post">
-
+            <form method="POST" class="uniForm"">
+                {{form | crispy}} {% csrf_token %}
+                <input type="submit" class="btn btn-success btn-block"
+                value="add">
             </form>
         </div>
     </div>
